@@ -6,25 +6,29 @@ public class Spaceship_Movement : MonoBehaviour
 {
     Rigidbody2D body;
     public float moveSpeed;
+    public float minY = -4.5f;  // Minimum Y position (adjust based on your game area)
+    public float maxY = 4.5f;   // Maximum Y position (adjust based on your game area)
     float speedY;
 
     // Start is called before the first frame update
     void Start()
     {
         body = GetComponent<Rigidbody2D>();
-
-        Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        mousePosition.z = 0;  // Ensure the z-axis is 0 for 2D
-
-        // Calculate the direction from the bullet's position to the mouse position
-        Vector2 direction = (mousePosition - transform.position).normalized;
-
     }
 
     // Update is called once per frame
     void Update()
     {
+        // Get the vertical input for the spaceship (up/down arrow keys or joystick)
         speedY = Input.GetAxisRaw("Vertical") * moveSpeed;
-        body.velocity = new Vector2(0, speedY);
+
+        // Calculate the new position based on the current position and speed
+        float newYPosition = transform.position.y + speedY * Time.deltaTime;
+
+        // Clamp the Y position between minY and maxY limits
+        newYPosition = Mathf.Clamp(newYPosition, minY, maxY);
+
+        // Apply the clamped Y position to the Rigidbody2D's velocity (keep X as zero)
+        body.velocity = new Vector2(0, (newYPosition - transform.position.y) / Time.deltaTime);
     }
 }
