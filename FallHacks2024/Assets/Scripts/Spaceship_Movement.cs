@@ -12,6 +12,13 @@ public class Spaceship_Movement : MonoBehaviour
     void Start()
     {
         body = GetComponent<Rigidbody2D>();
+
+        Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        mousePosition.z = 0;  // Ensure the z-axis is 0 for 2D
+
+        // Calculate the direction from the bullet's position to the mouse position
+        Vector2 direction = (mousePosition - transform.position).normalized;
+
     }
 
     // Update is called once per frame

@@ -17,4 +17,12 @@ public class Shooting : MonoBehaviour
             Instantiate(bullet, shootingPosition.position, transform.rotation);
         }
     }
+
+    void OnTriggerEnter2D(Collider2D col)
+    {
+        if(col.gameObject.tag.Contains("Asteroid"))
+        {
+            Destroy(gameObject);
+        }
+    }
 }

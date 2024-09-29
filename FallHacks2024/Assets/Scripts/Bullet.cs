@@ -30,4 +30,12 @@ public class Bullet : MonoBehaviour
         // Destroy the bullet after 3 seconds
         Destroy(gameObject, 3);
     }
+
+        void OnTriggerEnter2D(Collider2D col)
+    {
+        if(col.gameObject.tag.Contains("Asteroid"))
+        {
+            Destroy(gameObject);
+        }
+    }
 }
