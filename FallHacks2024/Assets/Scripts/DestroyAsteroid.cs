@@ -6,6 +6,7 @@ using UnityEngine;
 public class DestroyAsteroid : MonoBehaviour
 {
     // Start is called before the first frame update
+    public int health;  // Asteroid health
     void Start()
     {
         
@@ -16,12 +17,15 @@ public class DestroyAsteroid : MonoBehaviour
     {
         
     }
-
+   
     void OnTriggerEnter2D(Collider2D col)
     {
         if(col.gameObject.tag == "Projectile")
         {
-            Destroy(gameObject);
+            health -= 1;
+            if(health <= 0){
+                Destroy(gameObject);
+            }
         }
     }
 

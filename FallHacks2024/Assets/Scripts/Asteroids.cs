@@ -13,9 +13,11 @@ public class AsteroidSpawner : MonoBehaviour
     public float maxSize = 1.5f;       // Maximum size for the asteroids
 
     private Camera mainCamera;
+    public int health;  // Asteroid health
 
     void Start()
     {
+
         // Get the main camera to calculate screen bounds
         mainCamera = Camera.main;
 
