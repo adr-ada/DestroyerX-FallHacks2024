@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class AsteroidSpawner : MonoBehaviour
 {
-    public GameObject asteroidPrefab;  // Reference to the asteroid prefab
+    public GameObject asteroidPrefab;  
     public float spawnRate = 1.0f;     // How often to spawn asteroids (in seconds)
     public float spawnOffset = 2.0f;   // Offset from the right side of the screen
     public float minSpeed = 2f;        // Minimum speed for the asteroids
@@ -13,7 +13,6 @@ public class AsteroidSpawner : MonoBehaviour
     public float maxSize = 1.5f;       // Maximum size for the asteroids
 
     private Camera mainCamera;
-    public int health;  // Asteroid health
 
     void Start()
     {
